@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.has_checked.order_by_hot.includes(:user)
+    if current_user
+      @liked_posts = current_user.liked_posts(@posts)
+    end
   end
 
   # GET /posts/1

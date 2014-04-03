@@ -21,3 +21,8 @@ ul.posts-list
         .btn-group
           a.btn href='#' title='评论'
             i.fa.fa-comment-o.fa-x
+- if current_user
+  javascript:
+    Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])
+
+

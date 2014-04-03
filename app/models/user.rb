@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :posts, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
 
   validates_presence_of :email, :username
 
@@ -23,6 +24,11 @@ class User < ActiveRecord::Base
     self.reset_password_sent_at = Time.now.utc
     save
     PasswordResetWorker.perform_async(self.id)
+  end
+
+  def liked_posts(posts)
+    post_ids = posts.pluck(:id)
+    self.likes.where(post_id: post_ids)
   end
 
 
