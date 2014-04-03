@@ -1,9 +1,6 @@
 require 'sidekiq/web'
 
 Blog::Application.routes.draw do
-
-  resources :comments
-
   root 'posts#index'
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -21,6 +18,7 @@ Blog::Application.routes.draw do
   resources :posts, :only => [:index, :new, :create, :edit, :update] do
     resources :likes, :only => [:create, :destroy]
     resources :unlikes, :only => [:create, :destroy]
+    resources :comments, :only => [:create, :update, :destroy]
     collection do
       get :check
     end
