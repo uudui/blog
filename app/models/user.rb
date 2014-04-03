@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy
   has_many :likes, :dependent => :destroy
+  has_many :unlikes, :dependent => :destroy
 
   validates_presence_of :email, :username
 
@@ -26,9 +27,12 @@ class User < ActiveRecord::Base
     PasswordResetWorker.perform_async(self.id)
   end
 
-  def liked_posts(posts)
-    post_ids = posts.pluck(:id)
+  def liked_posts(post_ids)
     self.likes.where(post_id: post_ids)
+  end
+
+  def unlike_posts(post_ids)
+    self.unlikes.where(post_id: post_ids)
   end
 
 

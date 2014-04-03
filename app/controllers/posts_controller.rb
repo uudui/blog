@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.has_checked.order_by_hot.includes(:user)
     if current_user
-      @liked_posts = current_user.liked_posts(@posts)
+      post_ids = @posts.pluck(:id)
+      @liked_posts = current_user.liked_posts(post_ids)
+      @unlike_posts = current_user.unlike_posts(post_ids)
     end
   end
 

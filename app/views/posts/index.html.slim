@@ -9,20 +9,26 @@ ul.posts-list
         .media
           = post.content
         .btn-group
-          =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn btn-like',:remote => true, :method => 'post', :title => '有笑点' do
+          =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn', :remote => true, :method => 'post', :title => '有笑点' do
             i.fa.fa-thumbs-o-up.fa-x
-            span.btn-text.likes_count
+            span.btn-text.likes-count
               =post.likes_count
         .btn-group
-          a.btn.btn-danger href='#' title='不给力'
+          =link_to post_unlikes_path(post), :id => "post-#{post.id}-unlike", :class => 'btn', :remote => true, :method => 'post', :title => '不给力' do
             i.fa.fa-thumbs-o-down.fa-x
-            span.btn-text
-              = '-50'
+            span.btn-text.unlikes-count
+              - if post.unlikes_count > 0
+                = "-#{post.unlikes_count}"
+              - else
+                = "#{post.unlikes_count}"
         .btn-group
           a.btn href='#' title='评论'
             i.fa.fa-comment-o.fa-x
+            span.btn-text.comments-count
+              =post.comments_count
 - if current_user
   javascript:
     Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])
+    Post.updateUnlike([#{@unlike_posts.pluck(:post_id).join(',')}])
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331084026) do
+ActiveRecord::Schema.define(version: 20140403080745) do
 
   create_table "likes", force: true do |t|
     t.string   "post_id"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20140331084026) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status",         limit: 1, default: "1"
+  end
+
+  create_table "unlikes", force: true do |t|
+    t.string   "post_id"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
