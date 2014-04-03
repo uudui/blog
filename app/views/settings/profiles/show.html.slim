@@ -1,0 +1,37 @@
+h2 =t('settings.profile')
+hr
+.row
+  = render 'settings/sidebar'
+  .span9
+    = form_for(@user, :url => settings_profile_path, :html => {:class => "sign-up-form"}) do |f|
+      - if @user.errors.any?
+        .alert.alert-block.alert-error
+          p
+            strong
+              = t('activerecord.errors.prohibited_being_saved')
+          ul
+            - @user.errors.full_messages.each do |msg|
+              li= msg
+      .control-group
+        = f.label :username, :class => "control-label" do
+            abbr title="required"
+            = '* '
+            = t 'users.username'
+        .controls
+          = f.text_field :username, :required => true
+      .control-group
+        = f.label :email, :class => "control-label" do
+          abbr title="required"
+          = '* '
+          = t 'users.email'
+        .controls
+          = f.email_field :email, :required => true
+        .control-group
+          = f.label :bio, :class => "control-label" do
+            = t 'users.bio'
+          .controls
+            = f.text_area :bio, :rows => "5", :class => "input-xlarge"
+
+      .control-group
+        .controls
+          = f.submit "保存修改", :class => "btn btn-success"

@@ -1,0 +1,8 @@
+.span3
+  ul.nav.nav-pills.nav-stacked
+    li class=('active' if controller_name == 'profiles')
+      a href=settings_profile_path
+        = t('settings.profile')
+    li class=('active' if controller_name == 'passwords')
+      a href=settings_password_path
+        = t('settings.password')

@@ -1,0 +1,27 @@
+= form_for(@user, :html => {:class => "sign-up-form"}) do |f|
+  h2= t('layouts.sign_up')
+  hr
+  - if @user.errors.any?
+    .alert.alert-block.alert-error
+      p
+        strong
+          = t('activerecord.errors.prohibited_being_saved')
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li= msg
+  .control-group
+    .controls
+      = f.text_field :username, :required => true, :placeholder => "Username"
+  .control-group
+    .controls
+      = f.email_field :email, :required => true, :placeholder => "Emil"
+  .control-group
+    .controls
+      = f.password_field :password, :required => true, :placeholder => "Password"
+  .control-group
+    .controls
+      = f.password_field :password_confirmation, :required => true, :placeholder => "Password Confirm"
+  .control-group
+    .controls
+      = f.submit "邮箱注册", :class => "btn btn-success"
+      = link_to t('layouts.back_to_login'), login_path, :class => "btn-link forget-btn"

@@ -1,0 +1,28 @@
+$baseFontFamily:                   "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+$baseFontSize:                     14px;
+$navbarHeight:                     50px !default;
+$btnPrimaryBackground:             #049cdb !default;
+$gridColumnWidth1200:              60px !default;
+$gridGutterWidth1200:              20px !default;
+
+
+body {
+  padding-top: 70px;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar .navbar-inner .nav-collapse .nav>li>a .fa {
+    font-size: 1.4em;
+    line-height: 0.75em;
+    vertical-align: -15%
+  }
+}
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+.dropdown-backdrop{
+  position: static;
+}
+
+
+

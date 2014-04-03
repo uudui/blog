@@ -1,0 +1,6 @@
+var likeBtn = $("#post-<%=@like.post_id%>-like"),
+    likeCount = likeBtn.find('.likes_count');
+likeBtn.addClass('btn-success').
+        find('.fa:visible').
+        addClass('fa-beat');
+likeCount.text((parseInt(likeCount.text()) + 1));

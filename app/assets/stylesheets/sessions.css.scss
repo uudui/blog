@@ -1,0 +1,32 @@
+.login-form,
+.sign-up-form,
+.forget-form {
+  padding: 0 19px 30px 30px;
+  margin: 0 auto 20px;
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  input[type="password"]{
+    font-size: 15px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 6px 8px;
+  }
+
+  input[type="submit"] {
+    font-size: 15px;
+    height: auto;
+    padding: 6px 15px;
+  }
+
+  label.remember-me {
+    font-weight: normal;
+  }
+
+  a.forget-btn {
+    padding-left: 15px;
+  }
+}
+
+

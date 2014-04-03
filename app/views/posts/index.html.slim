@@ -1,0 +1,23 @@
+h2 热门笑话
+ul.posts-list
+  - @posts.each do |post|
+    li.media
+      = link_to user_path(post.user), :class => "pull-left" do
+        = image_tag avatar_url(post.user, 60), :class => "avatar img-circle"
+      .media-body
+        = link_to post.user.username, user_path(post.user), :class => "media-heading"
+        .media
+          = post.content
+        .btn-group
+          =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn btn-like',:remote => true, :method => 'post', :title => '有笑点' do
+            i.fa.fa-thumbs-o-up.fa-x
+            span.btn-text.likes_count
+              =post.likes_count
+        .btn-group
+          a.btn.btn-danger href='#' title='不给力'
+            i.fa.fa-thumbs-o-down.fa-x
+            span.btn-text
+              = '-50'
+        .btn-group
+          a.btn href='#' title='评论'
+            i.fa.fa-comment-o.fa-x

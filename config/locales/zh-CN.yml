@@ -1,0 +1,57 @@
+zh-CN:
+  submit: "提交"
+  save: "保存"
+  cancel: "取消"
+
+  layouts:
+    hot: "热门笑话"
+    check: "审阅笑话"
+    share: "贡献笑话"
+    login: "登录"
+    back_to_login: "返回登录"
+    logout: "退出"
+    logout_success: "你已成功退出"
+    setting: "设置"
+    sign_up: "注册"
+    reset_password: "找回密码"
+    send_mail: 发送邮件给我
+    forget_password: "忘记密码了？"
+
+  activerecord:
+      errors:
+        models:
+          post:
+            attributes:
+              content:
+                blank: "笑话正文内容不能为空"
+        prohibited_being_saved: "有以下问题导致无法提交:"
+
+  posts:
+    content: "笑话正文"
+    content_placeholder: "在此处写下笑话的所有内容，500字以内"
+    tip: "笑点提示"
+    tip_placeholder: "在此处写下笑点提示，可不填写"
+    submit: "好了，提交上去"
+    check: "我认为这笑话"
+
+  users:
+    username: "用户名"
+    email: "电子邮箱"
+    bio: "自我介绍"
+    password: "密码"
+    password_confirmation: "确认密码"
+
+  settings:
+    profile: "基本资料"
+    password: "密码设置"
+    incorrect_current_password: "当前密码输入错误"
+
+    passwords:
+      successfully_updated: "密码设置成功"
+      current_password: "当前密码"
+      new_password: "新密码"
+
+  errors:
+    messages:
+      invalid_email_or_password: "用户登录名或密码错误"
+      please_login_first: "请先登录后再进行后续操作"

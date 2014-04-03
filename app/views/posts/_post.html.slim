@@ -1,0 +1,28 @@
+- if @post
+  .media.post-check-container
+    = link_to user_path(@post.user), :class => "pull-left" do
+      = image_tag avatar_url(@post.user, 60), :class => "avatar img-circle"
+    .media-body
+      = link_to @post.user.username, user_path(@post.user), :class => "media-heading"
+      .media
+        = @post.content
+  hr
+  ul.btn-group.btn-container
+    li
+      =link_to check_up_post_path(@post), :remote => true, :class => "btn btn-success" do
+        i.fa.fa-thumbs-o-up.fa-2x
+        p.btn-text
+          strong= '有笑点'
+    li
+      =link_to check_down_post_path(@post), :remote => true, :class => "btn btn-danger" do
+        i.fa.fa-thumbs-o-down.fa-2x
+        p.btn-text
+          strong= '不给力'
+    li
+      =link_to check_next_post_path(@post), :remote => true, :class => "btn btn-warning" do
+        i.fa.fa-arrow-circle-right.fa-2x
+        p.btn-text
+          strong= '不确定'
+- else
+  .media.post-check-container
+    strong= "目前没有可审阅的笑话，稍后再试试。"
