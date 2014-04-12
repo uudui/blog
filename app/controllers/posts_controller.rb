@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.has_checked.order_by_hot.includes(:user)
+    @posts = Post.has_checked.order_by_hot.includes(:user).paginate(:page => params[:page], :per_page => 10)
     if current_user
       post_ids = @posts.pluck(:id)
       @liked_posts = current_user.liked_posts(post_ids)
@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments.includes(:user).order(id: :desc)
   end
 
   # GET /posts/new

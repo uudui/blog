@@ -5,7 +5,8 @@ ul.posts-list
       = link_to user_path(post.user), :class => "pull-left" do
         = image_tag avatar_url(post.user, 60), :class => "avatar img-circle"
       .media-body
-        = link_to post.user.username, user_path(post.user), :class => "media-heading"
+        = link_to post.user.username, user_path(post.user), :class => "media-heading username"
+        = time_ago_tag(post.created_at)
         .media
           = post.content
         .btn-group
@@ -22,10 +23,11 @@ ul.posts-list
               - else
                 = "#{post.unlikes_count}"
         .btn-group
-          a.btn href='#' title='评论'
+          =link_to post_path(post), :class => "btn", :title => "评论" do
             i.fa.fa-comment-o.fa-x
             span.btn-text.comments-count
               =post.comments_count
+= will_paginate @posts, :class => "pagination"
 - if current_user
   javascript:
     Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])

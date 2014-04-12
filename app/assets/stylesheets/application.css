@@ -12,6 +12,7 @@
  *= require bootstrap_override
  *= require font-awesome
  *= require posts
+ *= require comments
  *= require likes
  *= require sessions
  */

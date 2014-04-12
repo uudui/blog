@@ -15,7 +15,7 @@ Blog::Application.routes.draw do
   end
 
 
-  resources :posts, :only => [:index, :new, :create, :edit, :update] do
+  resources :posts, :only => [:index, :new, :create, :edit, :update, :show] do
     resources :likes, :only => [:create, :destroy]
     resources :unlikes, :only => [:create, :destroy]
     resources :comments, :only => [:create, :update, :destroy]

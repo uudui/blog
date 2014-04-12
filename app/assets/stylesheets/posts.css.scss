@@ -11,60 +11,56 @@ label {
 
 ul.posts-list {
   margin: 0;
-}
 
-li.media {
-  list-style: none;
-  @include box-sizing(border-box);
+  li.media {
+    list-style: none;
+    @include box-sizing(border-box);
 
-  @include border-radius(5px);
+    @include border-radius(5px);
 
-  background-color: white;
-  border: 1px solid #ccc;
-  border-bottom-width: 2px;
-  //display: inline-block;
-  min-height: 100px;
-  line-height: 30px;
-  padding: 10px 20px;
-  overflow: hidden;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    //display: inline-block;
+    min-height: 100px;
+    line-height: 30px;
+    padding: 10px 20px;
+    overflow: hidden;
 
-  .avatar {
-    width: 60px;
-    height: 60px;
-  }
+    &:hover {
+      @include box-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+      background-color: #FFC;
+      border-bottom-width: 4px;
+      border-color: #a7a369;
+      cursor: pointer;
+    }
 
-  &:hover {
-    @include box-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
-    background-color: #FFC;
-    border-bottom-width: 4px;
-    border-color: #a7a369;
-    cursor: pointer;
-  }
-
-  .media-heading {
-    font-weight: bold;
-  }
-
-  .media {
-    margin-top: 5px;
-    margin-bottom: 15px;
-    font-size: 15px;
-  }
-
-  .fa-x {
-    font-size: 20px;
-  }
-  .btn-group {
-    margin-right: 10px;
-    vertical-align: middle;
-
-    .btn-text {
-      padding: 2px 3px;
+    .media-heading {
       font-weight: bold;
-      vertical-align: 9%;
+    }
+
+    .media {
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .fa-x {
+      font-size: 20px;
+    }
+    .btn-group {
+      margin-right: 10px;
+      vertical-align: middle;
+
+      .btn-text {
+        padding: 2px 3px;
+        font-weight: bold;
+        vertical-align: 9%;
+      }
     }
   }
+
 }
+
 
 .post-check-container {
   @include box-sizing(border-box);
@@ -96,5 +92,26 @@ ul.btn-group li {
     }
   }
 
+}
+
+.media {
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .username {
+    //display: block;
+    font-weight: bold;
+  }
+
+  time {
+    margin-left: 1em;
+    font-size: 80%;
+  }
+
+  .media {
+    margin-top: 5px;
+  }
 }
 

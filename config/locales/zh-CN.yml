@@ -55,3 +55,11 @@ zh-CN:
     messages:
       invalid_email_or_password: "用户登录名或密码错误"
       please_login_first: "请先登录后再进行后续操作"
+
+  time:
+     formats:
+       long: ""
+  will_paginate:
+    next_label: "下一页"
+    previous_label: "上一页"
+    page_gap: "&hellip;"

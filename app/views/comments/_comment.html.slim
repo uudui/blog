@@ -1,0 +1,8 @@
+li.media
+  = link_to user_path(comment.user), :class => "pull-left" do
+    = image_tag avatar_url(comment.user, 60), :class => "avatar img-circle"
+  .media-body
+    = link_to comment.user.username, user_path(comment.user), :class => "media-heading username"
+    = time_ago_tag(comment.created_at)
+    .media
+      = comment.body

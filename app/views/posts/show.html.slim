@@ -1,0 +1,20 @@
+.media.post-check-container
+  = link_to user_path(@post.user), :class => "pull-left" do
+    = image_tag avatar_url(@post.user, 60), :class => "avatar img-circle"
+  .media-body
+    = link_to @post.user.username, user_path(@post.user), :class => "media-heading username"
+    = time_ago_tag(@post.created_at)
+    .media
+      = @post.content
+h2= '评论'
+ul#comments-list.media-list
+  - if signed_in?
+    li.media
+      = form_for([@post, @post.comments.build], :html => {:class => "add-comment"}, :remote => true) do |f|
+        = f.text_area :body, :class => "input-block-level", :rows => 2, :required=> true, :placeholder => '此处填写评论内容'
+        = f.submit '添加评论', :class => "btn btn-success pull-right"
+  - @comments.each do |comment|
+    =render :partial=>"comments/comment",:locals=>{ :comment => comment }
+
+
+
