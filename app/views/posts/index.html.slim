@@ -1,36 +1,38 @@
-h2 热门笑话
-ul.posts-list
-  - @posts.each do |post|
-    li.media
-      = link_to user_path(post.user), :class => "pull-left" do
-        = image_tag avatar_url(post.user, 60), :class => "avatar img-circle"
-      .media-body
-        = link_to post.user.username, user_path(post.user), :class => "media-heading username"
-        = time_ago_tag(post.created_at)
-        .media
-          = post.content
-        .btn-group
-          =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn', :remote => true, :method => 'post', :title => '有笑点' do
-            i.fa.fa-thumbs-o-up.fa-x
-            span.btn-text.likes-count
-              =post.likes_count
-        .btn-group
-          =link_to post_unlikes_path(post), :id => "post-#{post.id}-unlike", :class => 'btn', :remote => true, :method => 'post', :title => '不给力' do
-            i.fa.fa-thumbs-o-down.fa-x
-            span.btn-text.unlikes-count
-              - if post.unlikes_count > 0
-                = "-#{post.unlikes_count}"
-              - else
-                = "#{post.unlikes_count}"
-        .btn-group
-          =link_to post_path(post), :class => "btn", :title => "评论" do
-            i.fa.fa-comment-o.fa-x
-            span.btn-text.comments-count
-              =post.comments_count
-= will_paginate @posts, :class => "pagination"
-- if current_user
-  javascript:
-    Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])
-    Post.updateUnlike([#{@unlike_posts.pluck(:post_id).join(',')}])
-
-
+.container-fluid
+  .row-fluid
+    .span9
+      h2 热门笑话
+      ul.posts-list
+        - @posts.each do |post|
+          li.media
+            = link_to user_path(post.user), :class => "pull-left" do
+              = image_tag avatar_url(post.user, 60), :class => "avatar img-circle"
+            .media-body
+              = link_to post.user.username, user_path(post.user), :class => "media-heading username"
+              = time_ago_tag(post.created_at)
+              .media
+                = post.content
+              .btn-group
+                =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn', :remote => true, :method => 'post', :title => '有笑点' do
+                  i.fa.fa-thumbs-o-up.fa-x
+                  span.btn-text.likes-count
+                    =post.likes_count
+              .btn-group
+                =link_to post_unlikes_path(post), :id => "post-#{post.id}-unlike", :class => 'btn', :remote => true, :method => 'post', :title => '不给力' do
+                  i.fa.fa-thumbs-o-down.fa-x
+                  span.btn-text.unlikes-count
+                    - if post.unlikes_count > 0
+                      = "-#{post.unlikes_count}"
+                    - else
+                      = "#{post.unlikes_count}"
+              .btn-group
+                =link_to post_path(post), :class => "btn", :title => "评论" do
+                  i.fa.fa-comment-o.fa-x
+                  span.btn-text.comments-count
+                    =post.comments_count
+      = will_paginate @posts, :class => "pagination"
+      - if current_user
+        javascript:
+          Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])
+          Post.updateUnlike([#{@unlike_posts.pluck(:post_id).join(',')}])
+    .span3
