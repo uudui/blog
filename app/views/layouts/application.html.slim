@@ -14,16 +14,18 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand href=root_path 爱笑话
+          a.brand href=root_path 好笑哇！
           .nav-collapse.collapse
             ul.nav
               li class=('active' if controller_name == 'posts' && action_name == 'index' )
                 = link_to posts_path do
                   i.fa.fa-fire
+                  = ' '
                   = t 'layouts.hot'
               li class=('active' if controller_name == 'posts' && action_name == 'check' )
                 a href=check_posts_path
                   i.fa.fa-gavel
+                  = ' '
                   = t 'layouts.check'
             ul.nav.pull-right
               - if current_user

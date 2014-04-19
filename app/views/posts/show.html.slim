@@ -7,14 +7,17 @@
     .media
       = @post.content
 h2= '评论'
+- if signed_in?
+  div.media
+    = form_for([@post, @post.comments.build], :html => {:class => "add-comment"}, :remote => true) do |f|
+      = f.text_area :body, :class => "input-block-level", :rows => 2, :required=> true, :placeholder => '此处填写评论内容'
+      = f.submit '添加评论', :class => "btn btn-success pull-right"
+
+
 ul#comments-list.media-list
-  - if signed_in?
-    li.media
-      = form_for([@post, @post.comments.build], :html => {:class => "add-comment"}, :remote => true) do |f|
-        = f.text_area :body, :class => "input-block-level", :rows => 2, :required=> true, :placeholder => '此处填写评论内容'
-        = f.submit '添加评论', :class => "btn btn-success pull-right"
   - @comments.each do |comment|
     =render :partial=>"comments/comment",:locals=>{ :comment => comment }
+= will_paginate @comments, :class => "pagination"
 
 
 

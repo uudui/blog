@@ -44,6 +44,8 @@ zh-CN:
   settings:
     profile: "基本资料"
     password: "密码设置"
+    profiles:
+      successfully_updated: "基本资料设置成功"
     incorrect_current_password: "当前密码输入错误"
 
     passwords:

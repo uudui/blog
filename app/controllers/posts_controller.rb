@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comments = @post.comments.includes(:user).order(id: :desc)
+    @comments = @post.comments.includes(:user).order(id: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /posts/new

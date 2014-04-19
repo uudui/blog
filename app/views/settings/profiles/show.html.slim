@@ -1,4 +1,7 @@
 h2 =t('settings.profile')
+- if notice
+    .alert.alert-success
+      strong = notice
 hr
 .row
   = render 'settings/sidebar'
