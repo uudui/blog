@@ -66,16 +66,10 @@ ul.posts-list {
 
 
 .post-check-container {
-  @include box-sizing(border-box);
-  border-radius: 5px;
-  background-color: #FFC;
-  border: 1px solid #a7a369;
-  border-bottom-width: 4px;
   line-height: 30px;
   min-height: 200px;
   padding: 10px 20px;
   overflow: hidden;
-  margin-bottom: 20px;
   font-size: 15px;
 }
 
