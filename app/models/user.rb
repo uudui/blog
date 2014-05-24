@@ -1,12 +1,24 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  email_regex = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  username_regex = /\A[A-Za-z0-9_]+\z/
+
   has_many :posts, :dependent => :destroy
   has_many :likes, :dependent => :destroy
   has_many :unlikes, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  validates_presence_of :email, :username
+  validates :username,
+            :presence => true,
+            :length => { :within => 3..50 },
+            #:exclusion => USERNAME_BLACKLIST,
+            :format => { :with => username_regex }
+
+  validates :email,
+            :presence => true,
+            :uniqueness => { :case_sensitive => false },
+            :format => { :with => email_regex }
 
   before_save :generate_remember_token
 
@@ -34,6 +46,10 @@ class User < ActiveRecord::Base
 
   def unlike_posts(post_ids)
     self.unlikes.where(post_id: post_ids)
+  end
+
+  def admin?
+    CONFIG['admin_emails'] && CONFIG['admin_emails'].include?(self.email)
   end
 
 

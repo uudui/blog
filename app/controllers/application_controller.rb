@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?
 
+  class AccessDenied < Exception; end
+
   def signed_in?
     !current_user.nil?
   end

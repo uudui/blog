@@ -14,6 +14,16 @@ Blog::Application.routes.draw do
     resource :profile, only: [:show, :update]
   end
 
+  namespace :admin do
+    root to: 'dashboard#index'
+
+    resources :users, only: [:index, :show, :update, :destroy] do
+      collection do
+        get :locked
+      end
+    end
+  end
+
 
   resources :posts, :only => [:index, :new, :create, :edit, :update, :show] do
     resources :likes, :only => [:create, :destroy]

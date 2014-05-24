@@ -1,0 +1,23 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      = t 'layouts.admin.users'
+  table.table.table-hover
+    thead
+      tr
+        th #
+        th ID
+        th 用户名
+        th Email
+        th 注册日期
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to t('admin.show'), admin_user_path(user)
+          td = user.id
+          td = user.username
+          td = user.email
+          td = user.created_at
+  .panel-footer.clearfix
+    .pull-right
+      = paginate @users, :theme => "bootstrap"

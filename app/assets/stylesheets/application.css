@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require bootstrap_override
+ *= require plugins/nprogress
  *= require font-awesome
  *= require posts
  *= require comments

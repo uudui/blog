@@ -1,7 +1,8 @@
-.container-fluid
-  .row-fluid
-    .span9
-      h2 热门笑话
+.row
+  .col-md-8
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title 热门笑话
       ul.posts-list
         - @posts.each do |post|
           li.media
@@ -13,12 +14,12 @@
               .media
                 = post.content
               .btn-group
-                =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn', :remote => true, :method => 'post', :title => '有笑点' do
+                =link_to post_likes_path(post), :id => "post-#{post.id}-like", :class => 'btn btn-default', :remote => true, :method => 'post', :title => '有笑点' do
                   i.fa.fa-thumbs-o-up.fa-x
                   span.btn-text.likes-count
                     =post.likes_count
               .btn-group
-                =link_to post_unlikes_path(post), :id => "post-#{post.id}-unlike", :class => 'btn', :remote => true, :method => 'post', :title => '不给力' do
+                =link_to post_unlikes_path(post), :id => "post-#{post.id}-unlike", :class => 'btn btn-default', :remote => true, :method => 'post', :title => '不给力' do
                   i.fa.fa-thumbs-o-down.fa-x
                   span.btn-text.unlikes-count
                     - if post.unlikes_count > 0
@@ -26,13 +27,27 @@
                     - else
                       = "#{post.unlikes_count}"
               .btn-group
-                =link_to post_path(post), :class => "btn", :title => "评论" do
+                =link_to post_path(post), :class => "btn btn-default", :title => "评论" do
                   i.fa.fa-comment-o.fa-x
                   span.btn-text.comments-count
                     =post.comments_count
-      = will_paginate @posts, :class => "pagination"
+      .panel-footer.clearfix
+        .pull-right
+          = will_paginate @posts
       - if current_user
         javascript:
           Post.updateLike([#{@liked_posts.pluck(:post_id).join(',')}])
           Post.updateUnlike([#{@unlike_posts.pluck(:post_id).join(',')}])
-    .span3
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          = '贡献笑话须知'
+      .panel-body
+        ol
+          li
+            = '真实有笑点，不含政治、色情、广告、诽谤、歧视等内容。'
+          li
+            = '贡献笑话需通过审核后发表。'
+          li
+            = '转载本站内容需注明出处。'

@@ -1,27 +1,31 @@
-= form_for(@user, :html => {:class => "sign-up-form"}) do |f|
-  h2= t('layouts.sign_up')
-  hr
-  - if @user.errors.any?
-    .alert.alert-block.alert-error
-      p
-        strong
-          = t('activerecord.errors.prohibited_being_saved')
-      ul
-        - @user.errors.full_messages.each do |msg|
-          li= msg
-  .control-group
-    .controls
-      = f.text_field :username, :required => true, :placeholder => "Username"
-  .control-group
-    .controls
-      = f.email_field :email, :required => true, :placeholder => "Emil"
-  .control-group
-    .controls
-      = f.password_field :password, :required => true, :placeholder => "Password"
-  .control-group
-    .controls
-      = f.password_field :password_confirmation, :required => true, :placeholder => "Password Confirm"
-  .control-group
-    .controls
-      = f.submit "邮箱注册", :class => "btn btn-success"
-      = link_to t('layouts.back_to_login'), login_path, :class => "btn-link forget-btn"
+h2= t('layouts.sign_up')
+hr
+- if @user.errors.any?
+  .alert.alert-block.alert-warning
+    p
+      strong
+        = t('activerecord.errors.prohibited_being_saved')
+    ul
+      - @user.errors.full_messages.each do |msg|
+        li= msg
+= form_for(@user, :html => {:class => "form-horizontal"}) do |f|
+  .form-group
+    = f.label :username, t("users.new.username.label"), :class => "col-sm-2 control-label"
+    .col-sm-4
+      = f.text_field :username, :class => "form-control", :required => true, :placeholder => t("users.new.username.placeholder")
+  .form-group
+    = f.label :email, t("users.new.email.label"), :class => "col-sm-2 control-label"
+    .col-sm-4
+      = f.email_field :email, :class => "form-control", :required => true, :placeholder => t("users.new.email.placeholder")
+  .form-group
+    = f.label :password, t("users.new.password.label"), :class => "col-sm-2 control-label"
+    .col-sm-4
+      = f.password_field :password, :class => "form-control", :required => true, :placeholder => t("users.new.password.placeholder")
+  .form-group
+    = f.label :password_confirmation, t("users.new.password_confirmation.label"), :class => "form-control", :class => "col-sm-2 control-label"
+    .col-sm-4
+      = f.password_field :password_confirmation, :class => "form-control", :required => true, :placeholder => t("users.new.password_confirmation.placeholder")
+  .form-group
+    .col-sm-offset-2.col-sm-4
+      = f.submit "邮箱注册", :class => "btn btn-primary"
+      = link_to t('layouts.back_to_login'), login_path, :class => "btn-link"

@@ -11,16 +11,19 @@ label {
 
 ul.posts-list {
   margin: 0;
+  padding: 0;
 
   li.media {
     list-style: none;
+    margin-top: 0;
     @include box-sizing(border-box);
 
-    @include border-radius(5px);
+    //border-radius: 5px;
 
     background-color: white;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
+    border-bottom: 1px solid #ccc;
+    //border: 0px solid #ccc;
+    //border-bottom-width: 1px;
     //display: inline-block;
     min-height: 100px;
     line-height: 30px;
@@ -29,8 +32,8 @@ ul.posts-list {
 
     &:hover {
       @include box-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
-      background-color: #FFC;
-      border-bottom-width: 4px;
+      background-color: #ffc;
+      border-bottom-width: 2px;
       border-color: #a7a369;
       cursor: pointer;
     }
@@ -64,7 +67,7 @@ ul.posts-list {
 
 .post-check-container {
   @include box-sizing(border-box);
-  @include border-radius(5px);
+  border-radius: 5px;
   background-color: #FFC;
   border: 1px solid #a7a369;
   border-bottom-width: 4px;

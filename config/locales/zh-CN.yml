@@ -2,8 +2,21 @@ zh-CN:
   submit: "提交"
   save: "保存"
   cancel: "取消"
+  karminari:
+    bootstrap:
+      paginator:
+        page: "第 %{page} 页"
 
   layouts:
+    admin:
+      admin: "%{name} 管理"
+      comments: "评论"
+      posts: "话题"
+      users: "用户"
+      show: "详细"
+      dashboard:
+        index:
+          dashboard: "控制台"
     hot: "热门笑话"
     check: "审阅笑话"
     share: "贡献笑话"
@@ -14,7 +27,7 @@ zh-CN:
     setting: "设置"
     sign_up: "注册"
     reset_password: "找回密码"
-    send_mail: 发送邮件给我
+    send_mail: "发送邮件给我"
     forget_password: "忘记密码了？"
 
   activerecord:
@@ -24,6 +37,13 @@ zh-CN:
             attributes:
               content:
                 blank: "笑话正文内容不能为空"
+          user:
+            attributes:
+              username:
+                too_short: "至少3个字符"
+                invalid: "用户名只能使用字母、数字或 _ 号"
+              password_confirmation:
+                confirmation: "两次输入的密码不一致"
         prohibited_being_saved: "有以下问题导致无法提交:"
 
   posts:
@@ -40,6 +60,28 @@ zh-CN:
     bio: "自我介绍"
     password: "密码"
     password_confirmation: "确认密码"
+
+    login:
+      email:
+        label: "邮 箱"
+        placeholder: "邮箱"
+      password:
+        label: "密 码"
+        placeholder: "密码"
+
+    new:
+      username:
+        label: "用户名"
+        placeholder: "字母、数字或下划线"
+      email:
+        label: "邮 箱"
+        placeholder: "常用Email地址"
+      password:
+        label: "密 码"
+        placeholder: "设置一个密码"
+      password_confirmation:
+        label: "确认密码"
+        placeholder: "再输入一次密码"
 
   settings:
     profile: "基本资料"
@@ -62,6 +104,6 @@ zh-CN:
      formats:
        long: ""
   will_paginate:
-    next_label: "下一页"
-    previous_label: "上一页"
+    next_label: "下一页 &#8594;"
+    previous_label: "&#8592; 上一页"
     page_gap: "&hellip;"

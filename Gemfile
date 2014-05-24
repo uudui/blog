@@ -25,10 +25,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'slim', '~> 1.3.8'
 
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'font-awesome-rails', '~> 4.0.3.1'
-gem "will_paginate", "~> 3.0.4"
-gem "bootstrap-will_paginate", "~> 0.0.9"
+gem 'will_paginate', '~> 3.0.5'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -45,6 +45,7 @@ gem "sinatra", "~> 1.4.4"
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'newrelic_rpm', '~> 3.8.1.221'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

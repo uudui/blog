@@ -1,17 +1,35 @@
-$baseFontFamily:                   "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+$font-family-base:                 "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
 $baseFontSize:                     14px;
-$navbarHeight:                     50px !default;
-$btnPrimaryBackground:             #049cdb !default;
+$navbar-height:                    60px !default;
+$navbar-inverse-bg:                #323543 !default;
 $gridColumnWidth1200:              60px !default;
 $gridGutterWidth1200:              20px !default;
 
+//$brand-primary:                    #049cdb !default;
+$btn-primary-bg:                   #049cdb !default;
 
-body {
-  padding-top: 70px;
+$navbar-inverse-brand-color:       #fff !default;
+$navbar-inverse-brand-hover-color: #fff !default;
+$navbar-inverse-brand-hover-bg:    #049cdb !default;
+
+//$dropdown-bg:                      #323543 !default;
+//$dropdown-link-hover-bg:           #323543 !default;
+
+#nprogress .bar {
+  z-index: 1001;
+}
+
+a.navbar-brand {
+  background-color: #049cdb;
+  font-size: 20px;
+  //font-weight: normal;
+  //color: #fff;
+  margin-bottom: -1px;
+  height: 61px;
 }
 
 @media screen and (min-width: 768px) {
-  .navbar .navbar-inner .nav-collapse .nav>li>a .fa {
+  .navbar-collapse .nav>li>a .fa {
     font-size: 1.4em;
     line-height: 0.75em;
     vertical-align: -15%
@@ -19,7 +37,7 @@ body {
 }
 
 @import "bootstrap";
-@import "bootstrap-responsive";
+//@import "bootstrap-responsive";
 .dropdown-backdrop{
   position: static;
 }

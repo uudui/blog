@@ -1,63 +1,67 @@
 doctype html
 html
   head
-    title 爱笑话
+    title
+      = page_title
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
   body class=params[:controller]
-    nav.navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          button.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse" type="button"
+    nav.navbar.navbar-static-top.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand href=root_path 好笑哇！
-          .nav-collapse.collapse
-            ul.nav
-              li class=('active' if controller_name == 'posts' && action_name == 'index' )
-                = link_to posts_path do
-                  i.fa.fa-fire
+          a.navbar-brand.brand-primary href=root_path
+            = CONFIG['title']
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li class=('active' if controller_name == 'posts' && action_name == 'index' )
+              = link_to posts_path do
+                i.fa.fa-fire
+                = ' '
+                = t 'layouts.hot'
+            li class=('active' if controller_name == 'posts' && action_name == 'check' )
+              a href=check_posts_path
+                i.fa.fa-gavel
+                = ' '
+                = t 'layouts.check'
+          ul.nav.navbar-nav.navbar-right
+            - if current_user
+              li class=('active' if controller_name == 'posts' && ['new', 'create', 'edit', 'update'].include?(action_name) )
+                = link_to new_post_path do
+                  i.fa.fa-plus.fa-fw
+                  = t 'layouts.share'
+              li.dropdown
+                    a.dropdown-toggle data-toggle="dropdown" href="#"
+                      = current_user.username
+                      b.caret
+                    ul.dropdown-menu
+                      li
+                        = link_to settings_profile_path do
+                          i.fa.fa-cog
+                          = ' '
+                          = t 'layouts.setting'
+                      li
+                        = link_to logout_path do
+                          i.fa.fa-sign-out
+                          = ' '
+                          = t 'layouts.logout'
+            - else
+              li class=('active' if controller_name == 'sessions')
+                = link_to login_path do
+                  i.fa.fa-sign-in
                   = ' '
-                  = t 'layouts.hot'
-              li class=('active' if controller_name == 'posts' && action_name == 'check' )
-                a href=check_posts_path
-                  i.fa.fa-gavel
+                  = t 'layouts.login'
+              li class=('active' if controller_name == 'users')
+                = link_to signup_path do
+                  i.fa.fa-user
                   = ' '
-                  = t 'layouts.check'
-            ul.nav.pull-right
-              - if current_user
-                li class=('active' if controller_name == 'posts' && ['new', 'create', 'edit', 'update'].include?(action_name) )
-                  = link_to new_post_path do
-                    i.fa.fa-plus.fa-fw
-                    = t 'layouts.share'
-                li.dropdown
-                  a.dropdown-toggle data-toggle="dropdown" href="#"
-                    = current_user.username
-                    b.caret
-                  ul.dropdown-menu
-                    li
-                      = link_to settings_profile_path do
-                        i.fa.fa-cog
-                        = ' '
-                        = t 'layouts.setting'
-                    li
-                      = link_to logout_path do
-                        i.fa.fa-sign-out
-                        = ' '
-                        = t 'layouts.logout'
-              - else
-                li class=('active' if controller_name == 'sessions')
-                  = link_to login_path do
-                    i.fa.fa-sign-in
-                    = ' '
-                    = t 'layouts.login'
-                li class=('active' if controller_name == 'users')
-                  = link_to signup_path do
-                    i.fa.fa-user
-                    = ' '
-                    = t 'layouts.sign_up'
-    .container
-      = yield
+                  = t 'layouts.sign_up'
+    .main
+      .container
+        = yield

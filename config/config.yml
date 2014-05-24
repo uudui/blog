@@ -1,0 +1,18 @@
+default: &default
+  title: 好笑哇!
+
+development:
+  <<: *default
+  admin_emails:
+    - 442453867@qq.com
+
+test:
+  <<: *default
+  admin_emails:
+    - admin@example.com
+
+production:
+  <<: *default
+
+  admin_emails:
+    # - admin@example.com

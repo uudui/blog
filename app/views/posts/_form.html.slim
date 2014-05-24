@@ -1,4 +1,4 @@
-= form_for(@post) do |f|
+= form_for(@post, :role => "form") do |f|
   - if @post.errors.any?
     .alert.alert-block.alert-error
       p
@@ -7,17 +7,14 @@
       ul
         - @post.errors.full_messages.each do |msg|
           li= msg
-  .control-group
+  .form-group
     = f.label :content, :class => "control-label" do
       abbr title="required"
       = '* '
       = t 'posts.content'
-    .controls
-      = f.text_area :content, :class => "input-block-level", :rows => 10, :required => true, :placeholder => t('posts.content_placeholder')
-  .control-group
+    = f.text_area :content, :class => "form-control", :rows => 10, :required => true, :placeholder => t('posts.content_placeholder')
+  .form-group
     = f.label :tip, t('posts.tip'), :class => "control-label"
-    .controls
-      = f.text_area :tip, :class => "input-block-level", :rows => 2,  :placeholder => t('posts.tip_placeholder')
-  .control-group
-    .controls
-      = f.submit t('posts.submit'), :class => "btn btn-large btn-success"
+    = f.text_area :tip, :class => "form-control", :rows => 2,  :placeholder => t('posts.tip_placeholder')
+  .form-group
+    = f.submit t('posts.submit'), :class => "btn btn-primary btn-lg"
